@@ -1,24 +1,26 @@
 Summary:	NetworkManager VPN integration for OpenVPN
+Summary(pl.UTF-8):	Integracja NetworkManagera z OpenVPN-em
 Name:		NetworkManager-OpenVPN
 Version:	0.7
 %define		_rev rev3104
 Release:	0.%{_rev}.1
-License:	GPL
+License:	GPL v2+
 Group:		X11/Applications
 Source0:	NetworkManager-%{version}%{_rev}.tar.bz2
 # Source0-md5:	261b0672dfd21d5a99cbaae12e502006
 URL:		http://www.gnome.org/projects/NetworkManager/
-BuildRequires:	GConf2-devel
-BuildRequires:	NetworkManager-applet-devel >= 0.7
+BuildRequires:	GConf2-devel >= 2.0
+BuildRequires:	NetworkManager-applet-devel >= 0.7.0
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	dbus-glib-devel >= 0.72
 BuildRequires:	gnome-keyring-devel
-BuildRequires:	gtk+2-devel
+BuildRequires:	gtk+2-devel >= 2:2.6
 BuildRequires:	intltool >= 0.36.2
-BuildRequires:	libglade2-devel
-BuildRequires:	libgnomeui-devel
+BuildRequires:	libglade2-devel >= 2.0
+BuildRequires:	libgnomeui-devel >= 2.0
 BuildRequires:	libtool
+BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.311
 Requires(post,postun):	gtk+2
 Requires(post,postun):	hicolor-icon-theme
@@ -29,6 +31,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 NetworkManager VPN integration for OpenVPN.
+
+%description -l pl.UTF-8
+Integracja NetworkManagera z OpenVPN-em.
 
 %prep
 %setup -q -n NetworkManager-%{version}%{_rev}
