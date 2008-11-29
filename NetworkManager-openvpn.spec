@@ -1,33 +1,33 @@
 Summary:	NetworkManager VPN integration for OpenVPN
 Summary(pl.UTF-8):	Integracja NetworkManagera z OpenVPN-em
-Name:		NetworkManager-OpenVPN
-Version:	0.7
-%define		_rev rev3104
-Release:	0.%{_rev}.1
+Name:		NetworkManager-openvpn
+Version:	0.7.0
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	NetworkManager-%{version}%{_rev}.tar.bz2
-# Source0-md5:	261b0672dfd21d5a99cbaae12e502006
-URL:		http://www.gnome.org/projects/NetworkManager/
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/NetworkManager-openvpn/0.7/%{name}-%{version}.tar.bz2
+# Source0-md5:	52964484f984ce74502f9776f9dde872
+URL:		http://projects.gnome.org/NetworkManager/
 BuildRequires:	GConf2-devel >= 2.0
-BuildRequires:	NetworkManager-applet-devel >= 0.7.0
+BuildRequires:	NetworkManager-devel >= 0.7.0
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	dbus-glib-devel >= 0.72
+BuildRequires:	gettext-devel
 BuildRequires:	gnome-keyring-devel
-BuildRequires:	gtk+2-devel >= 2:2.6
+BuildRequires:	gtk+2-devel >= 2:2.6.0
 BuildRequires:	intltool >= 0.36.2
 BuildRequires:	libglade2-devel >= 2.0
 BuildRequires:	libgnomeui-devel >= 2.0
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.311
+Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk+2
 Requires(post,postun):	hicolor-icon-theme
-Requires:	NetworkManager-applet >= 0.7
+Requires:	NetworkManager >= 0.7
+Requires:	openvpn
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_libexecdir	%{_libdir}/%{name}
 
 %description
 NetworkManager VPN integration for OpenVPN.
@@ -36,11 +36,9 @@ NetworkManager VPN integration for OpenVPN.
 Integracja NetworkManagera z OpenVPN-em.
 
 %prep
-%setup -q -n NetworkManager-%{version}%{_rev}
+%setup -q
 
 %build
-cd vpn-daemons/openvpn
-%{__glib_gettextize}
 %{__intltoolize}
 %{__libtoolize}
 %{__aclocal}
@@ -53,29 +51,30 @@ cd vpn-daemons/openvpn
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} -C vpn-daemons/openvpn install \
+%{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%find_lang NetworkManager-openvpn
+rm -f $RPM_BUILD_ROOT%{_libdir}/NetworkManager/*.{a,la}
+
+%find_lang %{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/sbin/ldconfig
 %update_icon_cache hicolor
+%update_desktop_database
 
 %postun
-/sbin/ldconfig
 %update_icon_cache hicolor
+%update_desktop_database_postun
 
-%files -f NetworkManager-openvpn.lang
+%files -f %{name}.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/nm-openvpn-service
-%attr(755,root,root) %{_bindir}/nm-openvpn-service-openvpn-helper
-%attr(755,root,root) %{_libdir}/libnm-openvpn-properties.so*
-%dir %{_libdir}/%{name}
-%attr(755,root,root) %{_libexecdir}/nm-openvpn-auth-dialog
+%attr(755,root,root) %{_libdir}/NetworkManager/libnm-openvpn-properties.so
+%attr(755,root,root) %{_libdir}/nm-openvpn-auth-dialog
+%attr(755,root,root) %{_libdir}/nm-openvpn-service
+%attr(755,root,root) %{_libdir}/nm-openvpn-service-openvpn-helper
 %{_sysconfdir}/NetworkManager/VPN/nm-openvpn-service.name
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/dbus-1/system.d/nm-openvpn-service.conf
 %{_desktopdir}/nm-openvpn.desktop
