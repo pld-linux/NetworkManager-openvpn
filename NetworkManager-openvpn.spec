@@ -13,7 +13,7 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/NetworkManager-openvpn/0.8/%{nam
 # Source0-md5:	6e27f02b993506c96a669141d63667fd
 URL:		http://projects.gnome.org/NetworkManager/
 BuildRequires:	GConf2-devel >= 2.0
-BuildRequires:	NetworkManager-devel >= 0.8.2
+BuildRequires:	NetworkManager-devel >= 0.8.988
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	dbus-glib-devel >= 0.74
@@ -23,7 +23,7 @@ BuildRequires:	intltool >= 0.36.2
 BuildRequires:	libgnome-keyring-devel
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
-Requires:	NetworkManager >= 0.8.2
+Requires:	NetworkManager >= 0.8.988
 Requires:	openvpn
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
