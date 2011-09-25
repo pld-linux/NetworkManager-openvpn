@@ -24,6 +24,7 @@ BuildRequires:	libgnome-keyring-devel
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 Requires:	NetworkManager >= 2:0.9.0
+Requires:	dbus-glib >= 0.74
 Requires:	openvpn
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -43,7 +44,8 @@ Integracja NetworkManagera z OpenVPN-em.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure
+%configure \
+	--disable-static
 %{__make}
 
 %install
@@ -52,7 +54,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/NetworkManager/*.{a,la}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/NetworkManager/*.la
 
 %find_lang %{name}
 
@@ -61,6 +63,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
+%doc AUTHORS ChangeLog README
 %attr(755,root,root) %{_libdir}/NetworkManager/libnm-openvpn-properties.so
 %attr(755,root,root) %{_libdir}/nm-openvpn-auth-dialog
 %attr(755,root,root) %{_libdir}/nm-openvpn-service
