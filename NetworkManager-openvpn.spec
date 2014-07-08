@@ -12,7 +12,6 @@ Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/NetworkManager-openvpn/0.9/%{name}-%{version}.tar.xz
 # Source0-md5:	e85cf325233c10a692d976d2cecdc702
 URL:		http://projects.gnome.org/NetworkManager/
-BuildRequires:	GConf2-devel >= 2.0
 BuildRequires:	NetworkManager-devel >= 2:0.9.10.0
 BuildRequires:	NetworkManager-gtk-lib-devel >= 0.9.10.0
 BuildRequires:	autoconf >= 2.52
