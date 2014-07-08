@@ -5,28 +5,33 @@
 Summary:	NetworkManager VPN integration for OpenVPN
 Summary(pl.UTF-8):	Integracja NetworkManagera z OpenVPN-em
 Name:		NetworkManager-openvpn
-Version:	0.9.8.4
+Version:	0.9.10.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/NetworkManager-openvpn/0.9/%{name}-%{version}.tar.xz
-# Source0-md5:	afe11c50ce63bd251e50a2f1b20af654
+# Source0-md5:	e85cf325233c10a692d976d2cecdc702
 URL:		http://projects.gnome.org/NetworkManager/
 BuildRequires:	GConf2-devel >= 2.0
-BuildRequires:	NetworkManager-devel >= 2:0.9.8.4
+BuildRequires:	NetworkManager-devel >= 2:0.9.10.0
+BuildRequires:	NetworkManager-gtk-lib-devel >= 0.9.10.0
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	gettext-devel
-BuildRequires:	gtk+3-devel >= 3.0.0
+BuildRequires:	glib2-devel >= 1:2.32
+BuildRequires:	gtk+3-devel >= 3.4
 BuildRequires:	intltool >= 0.36.2
-BuildRequires:	libgnome-keyring-devel
+BuildRequires:	libsecret-devel
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
-Requires:	NetworkManager >= 2:0.9.8.4
+Requires:	NetworkManager >= 2:0.9.10.0
+Requires:	NetworkManager-gtk-lib >= 0.9.10.0
 Requires:	dbus-glib >= 0.74
+Requires:	glib2 >= 1:2.32
+Requires:	gtk+3 >= 3.4
 Requires:	openvpn
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
