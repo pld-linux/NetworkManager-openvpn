@@ -17,7 +17,7 @@ BuildRequires:	NetworkManager-gtk-lib-devel >= 1.0.0
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	dbus-glib-devel >= 0.74
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.32
 BuildRequires:	gtk+3-devel >= 3.4
 BuildRequires:	intltool >= 0.36.2
