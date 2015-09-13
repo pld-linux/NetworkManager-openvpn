@@ -26,6 +26,13 @@ BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
+Provides:	group(nm-openvpn)
+Provides:	user(nm-openvpn)
+Requires(postun):	/usr/sbin/groupdel
+Requires(postun):	/usr/sbin/userdel
+Requires(pre):	/bin/id
+Requires(pre):	/usr/sbin/groupadd
+Requires(pre):	/usr/sbin/useradd
 Requires:	NetworkManager >= 2:1.0.0
 Requires:	NetworkManager-gtk-lib >= 1.0.6
 Requires:	dbus-glib >= 0.74
@@ -66,6 +73,16 @@ rm -rf $RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%pre
+%groupadd -g 324 -r -f nm-openvpn
+%useradd -u 324 -s /bin/false -c "Default user for running openvpn spawned by NetworkManager" -g nm-openvpn nm-openvpn
+
+%postun
+if [ "$1" = "0" ]; then
+	%userremove nm-openvpn
+	%groupremove nm-openvpn
+fi
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
