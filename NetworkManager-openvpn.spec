@@ -5,18 +5,17 @@
 Summary:	NetworkManager VPN integration for OpenVPN
 Summary(pl.UTF-8):	Integracja NetworkManagera z OpenVPN-em
 Name:		NetworkManager-openvpn
-Version:	1.0.8
+Version:	1.2.2
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/NetworkManager-openvpn/1.0/%{name}-%{version}.tar.xz
-# Source0-md5:	758a9951ad5e20a37c72cc7326c9c750
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/NetworkManager-openvpn/1.2/%{name}-%{version}.tar.xz
+# Source0-md5:	f7889d7530f226afd3ef110501a68af4
 URL:		https://wiki.gnome.org/Projects/NetworkManager
-BuildRequires:	NetworkManager-devel >= 2:1.0.0
-BuildRequires:	NetworkManager-gtk-lib-devel >= 1.0.6
+BuildRequires:	NetworkManager-devel >= 2:1.2.0
+BuildRequires:	NetworkManager-gtk-lib-devel >= 1.2.0
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1:1.9
-BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.32
 BuildRequires:	gtk+3-devel >= 3.4
@@ -33,9 +32,8 @@ Requires(postun):	/usr/sbin/userdel
 Requires(pre):	/bin/id
 Requires(pre):	/usr/sbin/groupadd
 Requires(pre):	/usr/sbin/useradd
-Requires:	NetworkManager >= 2:1.0.0
-Requires:	NetworkManager-gtk-lib >= 1.0.6
-Requires:	dbus-glib >= 0.74
+Requires:	NetworkManager >= 2:1.2.0
+Requires:	NetworkManager-gtk-lib >= 1.2.0
 Requires:	glib2 >= 1:2.32
 Requires:	gtk+3 >= 3.4
 Requires:	openvpn
@@ -87,10 +85,13 @@ fi
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README
+%attr(755,root,root) %{_libdir}/NetworkManager/libnm-vpn-plugin-openvpn.so
 %attr(755,root,root) %{_libdir}/NetworkManager/libnm-openvpn-properties.so
 %attr(755,root,root) %{_libdir}/nm-openvpn-auth-dialog
 %attr(755,root,root) %{_libdir}/nm-openvpn-service
 %attr(755,root,root) %{_libdir}/nm-openvpn-service-openvpn-helper
+%{_libdir}/NetworkManager/VPN/nm-openvpn-service.name
 %{_sysconfdir}/NetworkManager/VPN/nm-openvpn-service.name
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/dbus-1/system.d/nm-openvpn-service.conf
+%{_datadir}/appdata/network-manager-openvpn.metainfo.xml
 %{_datadir}/gnome-vpn-properties/openvpn
