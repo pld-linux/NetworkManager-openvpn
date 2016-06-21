@@ -6,7 +6,7 @@ Summary:	NetworkManager VPN integration for OpenVPN
 Summary(pl.UTF-8):	Integracja NetworkManagera z OpenVPN-em
 Name:		NetworkManager-openvpn
 Version:	1.2.2
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/NetworkManager-openvpn/1.2/%{name}-%{version}.tar.xz
@@ -90,7 +90,7 @@ fi
 %attr(755,root,root) %{_libdir}/nm-openvpn-auth-dialog
 %attr(755,root,root) %{_libdir}/nm-openvpn-service
 %attr(755,root,root) %{_libdir}/nm-openvpn-service-openvpn-helper
-%{_libdir}/NetworkManager/VPN/nm-openvpn-service.name
+%{_prefix}/lib/NetworkManager/VPN/nm-openvpn-service.name
 %{_sysconfdir}/NetworkManager/VPN/nm-openvpn-service.name
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/dbus-1/system.d/nm-openvpn-service.conf
 %{_datadir}/appdata/network-manager-openvpn.metainfo.xml
