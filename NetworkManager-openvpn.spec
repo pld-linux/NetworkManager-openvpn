@@ -1,7 +1,3 @@
-# TODO
-# - uses openvpn user/group, but pld does not have any
-#   see NetworkManager-openvpn-0.8/properties/import-export.c
-#   add in openvpn.spec? switch to nobody/nobody?
 Summary:	NetworkManager VPN integration for OpenVPN
 Summary(pl.UTF-8):	Integracja NetworkManagera z OpenVPN-em
 Name:		NetworkManager-openvpn
