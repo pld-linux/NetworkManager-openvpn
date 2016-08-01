@@ -16,7 +16,7 @@ BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.32
 BuildRequires:	gtk+3-devel >= 3.4
 BuildRequires:	intltool >= 0.36.2
-BuildRequires:	libsecret-devel
+BuildRequires:	libsecret-devel >= 0.18
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	tar >= 1:1.22
@@ -32,6 +32,7 @@ Requires:	NetworkManager >= 2:1.2.0
 Requires:	NetworkManager-gtk-lib >= 1.2.0
 Requires:	glib2 >= 1:2.32
 Requires:	gtk+3 >= 3.4
+Requires:	libsecret >= 0.18
 Requires:	openvpn
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
