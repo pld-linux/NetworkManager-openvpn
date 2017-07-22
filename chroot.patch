@@ -1,0 +1,10 @@
+--- NetworkManager-openvpn-1.2.10/shared/nm-service-defines.h~	2017-05-16 20:29:15.000000000 +0300
++++ NetworkManager-openvpn-1.2.10/shared/nm-service-defines.h	2017-07-22 14:59:32.246576023 +0300
+@@ -113,6 +113,6 @@
+ /* User name and group to run nm-openvpn-service under */
+ #define NM_OPENVPN_USER   "nm-openvpn"
+ #define NM_OPENVPN_GROUP  "nm-openvpn"
+-#define NM_OPENVPN_CHROOT LOCALSTATEDIR "/lib/openvpn/chroot"
++#define NM_OPENVPN_CHROOT "/usr/share/empty"
+ 
+ #endif /* __NM_SERVICE_DEFINES_H__ */
