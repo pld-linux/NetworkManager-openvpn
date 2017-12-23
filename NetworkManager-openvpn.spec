@@ -87,9 +87,9 @@ fi
 %attr(755,root,root) %{_libdir}/NetworkManager/libnm-vpn-plugin-openvpn.so
 %attr(755,root,root) %{_libdir}/NetworkManager/libnm-vpn-plugin-openvpn-editor.so
 %attr(755,root,root) %{_libdir}/NetworkManager/libnm-openvpn-properties.so
-%attr(755,root,root) %{_libdir}/nm-openvpn-auth-dialog
-%attr(755,root,root) %{_libdir}/nm-openvpn-service
-%attr(755,root,root) %{_libdir}/nm-openvpn-service-openvpn-helper
+%attr(755,root,root) %{_libexecdir}/nm-openvpn-auth-dialog
+%attr(755,root,root) %{_libexecdir}/nm-openvpn-service
+%attr(755,root,root) %{_libexecdir}/nm-openvpn-service-openvpn-helper
 %{_prefix}/lib/NetworkManager/VPN/nm-openvpn-service.name
 %{_sysconfdir}/NetworkManager/VPN/nm-openvpn-service.name
 %config(noreplace) %verify(not md5 mtime size) /etc/dbus-1/system.d/nm-openvpn-service.conf
