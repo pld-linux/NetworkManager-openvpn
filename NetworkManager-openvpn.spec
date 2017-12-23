@@ -55,6 +55,7 @@ Integracja NetworkManagera z OpenVPN-em.
 %{__autoheader}
 %{__automake}
 %configure \
+	--disable-silent-rules \
 	--disable-static
 %{__make}
 
