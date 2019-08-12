@@ -2,7 +2,7 @@ Summary:	NetworkManager VPN integration for OpenVPN
 Summary(pl.UTF-8):	Integracja NetworkManagera z OpenVPN-em
 Name:		NetworkManager-openvpn
 Version:	1.8.10
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/NetworkManager-openvpn/1.8/%{name}-%{version}.tar.xz
@@ -56,7 +56,8 @@ Integracja NetworkManagera z OpenVPN-em.
 %{__automake}
 %configure \
 	--disable-silent-rules \
-	--disable-static
+	--disable-static \
+	--without-libnm-glib
 %{__make}
 
 %install
@@ -87,11 +88,9 @@ fi
 %doc AUTHORS ChangeLog README
 %attr(755,root,root) %{_libdir}/NetworkManager/libnm-vpn-plugin-openvpn.so
 %attr(755,root,root) %{_libdir}/NetworkManager/libnm-vpn-plugin-openvpn-editor.so
-%attr(755,root,root) %{_libdir}/NetworkManager/libnm-openvpn-properties.so
 %attr(755,root,root) %{_libexecdir}/nm-openvpn-auth-dialog
 %attr(755,root,root) %{_libexecdir}/nm-openvpn-service
 %attr(755,root,root) %{_libexecdir}/nm-openvpn-service-openvpn-helper
 %{_prefix}/lib/NetworkManager/VPN/nm-openvpn-service.name
-%{_sysconfdir}/NetworkManager/VPN/nm-openvpn-service.name
 %config(noreplace) %verify(not md5 mtime size) /etc/dbus-1/system.d/nm-openvpn-service.conf
 %{_datadir}/appdata/network-manager-openvpn.metainfo.xml
