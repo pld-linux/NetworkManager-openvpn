@@ -1,12 +1,13 @@
+# TODO: GTK4 variant for GNOME42 (--with-gtk4, requires libnma-gtk4 >= 1.8.33)
 Summary:	NetworkManager VPN integration for OpenVPN
 Summary(pl.UTF-8):	Integracja NetworkManagera z OpenVPN-em
 Name:		NetworkManager-openvpn
-Version:	1.8.16
+Version:	1.8.18
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	https://download.gnome.org/sources/NetworkManager-openvpn/1.8/%{name}-%{version}.tar.xz
-# Source0-md5:	971b5f62be29e9fd29c9fac2c363380a
+# Source0-md5:	dd2b2bf733b644301cb49479b9966d39
 Patch0:		chroot.patch
 URL:		https://wiki.gnome.org/Projects/NetworkManager
 BuildRequires:	NetworkManager-devel >= 2:1.7.0
@@ -14,7 +15,7 @@ BuildRequires:	NetworkManager-gtk-lib-devel >= 1.7.0
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	gettext-tools
-BuildRequires:	glib2-devel >= 1:2.32
+BuildRequires:	glib2-devel >= 1:2.34
 BuildRequires:	gtk+3-devel >= 3.4
 BuildRequires:	intltool >= 0.36.2
 BuildRequires:	libsecret-devel >= 0.18
@@ -31,7 +32,7 @@ Requires(pre):	/usr/sbin/groupadd
 Requires(pre):	/usr/sbin/useradd
 Requires:	NetworkManager >= 2:1.7.0
 Requires:	NetworkManager-gtk-lib >= 1.7.0
-Requires:	glib2 >= 1:2.32
+Requires:	glib2 >= 1:2.34
 Requires:	gtk+3 >= 3.4
 Requires:	libsecret >= 0.18
 Requires:	openvpn
