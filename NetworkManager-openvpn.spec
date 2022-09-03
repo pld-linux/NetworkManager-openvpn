@@ -1,23 +1,27 @@
-# TODO: GTK4 variant for GNOME42 (--with-gtk4, requires libnma-gtk4 >= 1.8.33)
+#
+# Conditional build:
+%bcond_without	gtk4	# Gtk4 version of editor plugin (GNOME 42+)
+
 Summary:	NetworkManager VPN integration for OpenVPN
 Summary(pl.UTF-8):	Integracja NetworkManagera z OpenVPN-em
 Name:		NetworkManager-openvpn
-Version:	1.8.18
+Version:	1.10.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/NetworkManager-openvpn/1.8/%{name}-%{version}.tar.xz
-# Source0-md5:	dd2b2bf733b644301cb49479b9966d39
+Source0:	https://download.gnome.org/sources/NetworkManager-openvpn/1.10/%{name}-%{version}.tar.xz
+# Source0-md5:	c24c2a5c0d29f5c2d97f241322027823
 Patch0:		chroot.patch
 URL:		https://wiki.gnome.org/Projects/NetworkManager
 BuildRequires:	NetworkManager-devel >= 2:1.7.0
-BuildRequires:	NetworkManager-gtk-lib-devel >= 1.7.0
+BuildRequires:	NetworkManager-gtk-lib-devel >= 1.8.0
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1:1.9
-BuildRequires:	gettext-tools
+BuildRequires:	gettext-tools >= 0.19
 BuildRequires:	glib2-devel >= 1:2.34
 BuildRequires:	gtk+3-devel >= 3.4
-BuildRequires:	intltool >= 0.36.2
+%{?with_gtk4:BuildRequires:	gtk4-devel >= 4.0}
+%{?with_gtk4:BuildRequires:	libnma-gtk4-devel >= 1.8.33}
 BuildRequires:	libsecret-devel >= 0.18
 BuildRequires:	libtool >= 2:2
 BuildRequires:	pkgconfig
@@ -49,7 +53,6 @@ Integracja NetworkManagera z OpenVPN-em.
 %patch0 -p1
 
 %build
-%{__intltoolize}
 %{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
@@ -57,7 +60,8 @@ Integracja NetworkManagera z OpenVPN-em.
 %{__automake}
 %configure \
 	--disable-silent-rules \
-	--disable-static
+	--disable-static \
+	%{?with_gtk4:--with-gtk4}
 
 %{__make}
 
@@ -86,9 +90,12 @@ fi
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog README
+%doc AUTHORS NEWS README
 %attr(755,root,root) %{_libdir}/NetworkManager/libnm-vpn-plugin-openvpn.so
 %attr(755,root,root) %{_libdir}/NetworkManager/libnm-vpn-plugin-openvpn-editor.so
+%if %{with gtk4}
+%attr(755,root,root) %{_libdir}/NetworkManager/libnm-gtk4-vpn-plugin-openvpn-editor.so
+%endif
 %attr(755,root,root) %{_libexecdir}/nm-openvpn-auth-dialog
 %attr(755,root,root) %{_libexecdir}/nm-openvpn-service
 %attr(755,root,root) %{_libexecdir}/nm-openvpn-service-openvpn-helper
