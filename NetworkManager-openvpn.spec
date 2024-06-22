@@ -5,15 +5,15 @@
 Summary:	NetworkManager VPN integration for OpenVPN
 Summary(pl.UTF-8):	Integracja NetworkManagera z OpenVPN-em
 Name:		NetworkManager-openvpn
-Version:	1.10.2
+Version:	1.12.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/NetworkManager-openvpn/1.10/%{name}-%{version}.tar.xz
-# Source0-md5:	3a7cb5ac3d33bd8b22dc9f4b58216b5b
+Source0:	https://download.gnome.org/sources/NetworkManager-openvpn/1.12/%{name}-%{version}.tar.xz
+# Source0-md5:	580c6b608571f163709a4e0d72e34c6a
 Patch0:		chroot.patch
 URL:		https://wiki.gnome.org/Projects/NetworkManager
-BuildRequires:	NetworkManager-devel >= 2:1.7.0
+BuildRequires:	NetworkManager-devel >= 2:1.46.2
 BuildRequires:	NetworkManager-gtk-lib-devel >= 1.8.0
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1:1.9
@@ -34,7 +34,7 @@ Requires(postun):	/usr/sbin/userdel
 Requires(pre):	/bin/id
 Requires(pre):	/usr/sbin/groupadd
 Requires(pre):	/usr/sbin/useradd
-Requires:	NetworkManager >= 2:1.7.0
+Requires:	NetworkManager >= 2:1.46.2
 Requires:	NetworkManager-gtk-lib >= 1.7.0
 Requires:	glib2 >= 1:2.34
 Requires:	gtk+3 >= 3.4
