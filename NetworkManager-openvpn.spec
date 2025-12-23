@@ -5,15 +5,15 @@
 Summary:	NetworkManager VPN integration for OpenVPN
 Summary(pl.UTF-8):	Integracja NetworkManagera z OpenVPN-em
 Name:		NetworkManager-openvpn
-Version:	1.12.3
+Version:	1.12.5
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	https://download.gnome.org/sources/NetworkManager-openvpn/1.12/%{name}-%{version}.tar.xz
-# Source0-md5:	48b85d061ac6e1cdc39822e336b46cef
+# Source0-md5:	d2e46b68987128d4a49f6ba991539004
 Patch0:		chroot.patch
 URL:		https://wiki.gnome.org/Projects/NetworkManager
-BuildRequires:	NetworkManager-devel >= 2:1.46.2
+BuildRequires:	NetworkManager-devel >= 2:1.54.3
 BuildRequires:	NetworkManager-gtk-lib-devel >= 1.8.0
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1:1.9
@@ -34,7 +34,7 @@ Requires(postun):	/usr/sbin/userdel
 Requires(pre):	/bin/id
 Requires(pre):	/usr/sbin/groupadd
 Requires(pre):	/usr/sbin/useradd
-Requires:	NetworkManager >= 2:1.46.2
+Requires:	NetworkManager >= 2:1.54.3
 Requires:	NetworkManager-gtk-lib >= 1.7.0
 Requires:	glib2 >= 1:2.34
 Requires:	gtk+3 >= 3.4
@@ -100,5 +100,7 @@ fi
 %attr(755,root,root) %{_libexecdir}/nm-openvpn-service
 %attr(755,root,root) %{_libexecdir}/nm-openvpn-service-openvpn-helper
 %{_prefix}/lib/NetworkManager/VPN/nm-openvpn-service.name
+/usr/lib/sysusers.d/nm-openvpn-sysusers.conf
+%{systemdtmpfilesdir}/nm-openvpn-tmpfiles.conf
 %{_datadir}/dbus-1/system.d/nm-openvpn-service.conf
 %{_datadir}/metainfo/network-manager-openvpn.metainfo.xml
